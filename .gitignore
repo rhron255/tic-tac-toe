@@ -1,0 +1,5 @@
+/backend/users.json
+/backend/venv/
+/backend/__pycahce__
+/frontend/.angular
+/backend/*/__pycache__
