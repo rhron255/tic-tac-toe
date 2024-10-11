@@ -1,0 +1,21 @@
+<mat-card class="selector-view">
+    <div class="column">
+
+        <h1>Create Room</h1>
+        <form>
+            <mat-form-field>
+                <mat-label>Room Name</mat-label>
+                <input matInput type="text" [(ngModel)]="roomName" name="roomName">
+            </mat-form-field>
+            <br>
+            <button mat-raised-button (click)="createRoom()">create</button>
+        </form>
+    </div>
+    <div class="column">
+        <h1>Join Room</h1>
+        <button mat-stroked-button *ngFor="let room of rooms" [routerLink]="['/board', room.id]"
+            style="margin: 0.5em 0.5em 0.5em 0.5em; padding: 2em 2em 2em 2em;">
+            {{room.name}}<br><br><i>{{room.id}}</i>
+    </button>
+    </div>
+</mat-card>

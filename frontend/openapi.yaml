@@ -1,0 +1,119 @@
+openapi: 3.0.0
+info:
+  title: FastAPI
+  version: 0.1.0
+servers:
+  - url: /api
+paths:
+  /login:
+    get:
+      tags:
+        - login
+      summary: Login
+      operationId: login_login_get
+      parameters:
+        - name: username
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Username
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /rooms/create:
+    get:
+      tags:
+        - rooms
+      summary: Create Room
+      operationId: create_room_rooms_create_get
+      parameters:
+        - name: room_name
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Room Name
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /rooms:
+    get:
+      tags:
+        - rooms
+      summary: Get All Rooms
+      operationId: get_all_rooms_rooms_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RoomDto'
+                type: array
+                title: Response Get All Rooms Rooms Get
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    RoomDto:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+        - id
+        - name
+      title: RoomDto
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError

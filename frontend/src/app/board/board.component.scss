@@ -1,0 +1,11 @@
+mat-grid-tile {
+    background: lightgray;
+    &:hover {
+        background: darkgray;
+    }
+}
+
+mat-grid-list {
+    width: 75%;
+    height: 75%;
+}

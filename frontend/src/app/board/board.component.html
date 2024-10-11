@@ -1,0 +1,3 @@
+<mat-grid-list cols="3" rowHeight="1:1">
+    <mat-grid-tile *ngFor="let pos of board; index as i" (click)="setShape(i)">{{pos}}</mat-grid-tile>
+</mat-grid-list>
