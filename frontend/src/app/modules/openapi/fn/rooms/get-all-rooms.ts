@@ -10,14 +10,12 @@ import { RequestBuilder } from '../../request-builder';
 
 import { RoomDto } from '../../models/room-dto';
 
-export interface CreateRoomRoomsCreateGet$Params {
-  room_name: string;
+export interface GetAllRooms$Params {
 }
 
-export function createRoomRoomsCreateGet(http: HttpClient, rootUrl: string, params: CreateRoomRoomsCreateGet$Params, context?: HttpContext): Observable<StrictHttpResponse<RoomDto>> {
-  const rb = new RequestBuilder(rootUrl, createRoomRoomsCreateGet.PATH, 'get');
+export function getAllRooms(http: HttpClient, rootUrl: string, params?: GetAllRooms$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<RoomDto>>> {
+  const rb = new RequestBuilder(rootUrl, getAllRooms.PATH, 'get');
   if (params) {
-    rb.query('room_name', params.room_name, {});
   }
 
   return http.request(
@@ -25,9 +23,9 @@ export function createRoomRoomsCreateGet(http: HttpClient, rootUrl: string, para
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<RoomDto>;
+      return r as StrictHttpResponse<Array<RoomDto>>;
     })
   );
 }
 
-createRoomRoomsCreateGet.PATH = '/rooms/create';
+getAllRooms.PATH = '/rooms';

@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: FastAPI
   version: 0.1.0
@@ -10,7 +10,7 @@ paths:
       tags:
         - login
       summary: Login
-      operationId: login_login_get
+      operationId: login
       parameters:
         - name: username
           in: query
@@ -35,7 +35,7 @@ paths:
       tags:
         - rooms
       summary: Create Room
-      operationId: create_room_rooms_create_get
+      operationId: create_room
       parameters:
         - name: room_name
           in: query
@@ -61,7 +61,7 @@ paths:
       tags:
         - rooms
       summary: Get All Rooms
-      operationId: get_all_rooms_rooms_get
+      operationId: get_all_rooms
       responses:
         '200':
           description: Successful Response

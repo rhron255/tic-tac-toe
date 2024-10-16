@@ -1,0 +1,11 @@
+<div class="column">
+  <h1>Create Room</h1>
+  <form>
+    <mat-form-field>
+      <mat-label>Room Name</mat-label>
+      <input matInput type="text" [(ngModel)]="roomName" name="roomName">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button (click)="createRoom()">create</button>
+  </form>
+</div>

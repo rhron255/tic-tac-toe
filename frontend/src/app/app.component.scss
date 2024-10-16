@@ -1,32 +1,75 @@
+input[type="text"] {
+  border: solid 1px var(--primary-color);
+  padding: 10px;
+  border-radius: 8px;
+  margin-right: 4px;
+  display: inline-block;
+  width: 30%;
+}
+
+button {
+  padding: 10px;
+  border: solid 1px var(--primary-color);
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+  .results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   input[type="text"] {
-      border: solid 1px var(--primary-color);
-      padding: 10px;
-      border-radius: 8px;
-      margin-right: 4px;
-      display: inline-block;
-      width: 30%;
+    width: 70%;
   }
+}
 
-  button {
-      padding: 10px;
-      border: solid 1px var(--primary-color);
-      background: var(--primary-color);
-      color: white;
-      border-radius: 8px;
+@media (max-width: 499px) {
+  .results {
+    grid-template-columns: 1fr;
   }
+}
 
-  @media (min-width: 500px) and (max-width: 768px) {
-      .results {
-          grid-template-columns: repeat(2, 1fr);
-      }
+.header {
+  grid-area: header;
+}
 
-      input[type="text"] {
-          width: 70%;
-      }
-  }
+.menu {
+  grid-area: menu;
+  width: fit-content;
+}
 
-  @media (max-width: 499px) {
-      .results {
-          grid-template-columns: 1fr;
-      }
-  }
+.main {
+  grid-area: main;
+}
+
+div .right {
+  grid-area: right;
+  padding-left: 1em;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header header'
+    'menu main main main main right right'
+    'footer footer footer footer footer footer footer';
+  gap: 10px;
+  background-color: rgba(33, 150, 243, 0.18);
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+app-room-view {
+}

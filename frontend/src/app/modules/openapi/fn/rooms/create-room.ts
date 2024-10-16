@@ -8,15 +8,16 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
+import { RoomDto } from '../../models/room-dto';
 
-export interface LoginLoginGet$Params {
-  username: string;
+export interface CreateRoom$Params {
+  room_name: string;
 }
 
-export function loginLoginGet(http: HttpClient, rootUrl: string, params: LoginLoginGet$Params, context?: HttpContext): Observable<StrictHttpResponse<any>> {
-  const rb = new RequestBuilder(rootUrl, loginLoginGet.PATH, 'get');
+export function createRoom(http: HttpClient, rootUrl: string, params: CreateRoom$Params, context?: HttpContext): Observable<StrictHttpResponse<RoomDto>> {
+  const rb = new RequestBuilder(rootUrl, createRoom.PATH, 'get');
   if (params) {
-    rb.query('username', params.username, {});
+    rb.query('room_name', params.room_name, {});
   }
 
   return http.request(
@@ -24,9 +25,9 @@ export function loginLoginGet(http: HttpClient, rootUrl: string, params: LoginLo
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<any>;
+      return r as StrictHttpResponse<RoomDto>;
     })
   );
 }
 
-loginLoginGet.PATH = '/login';
+createRoom.PATH = '/rooms/create';

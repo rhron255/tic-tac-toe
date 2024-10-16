@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   @Output() loginEvent = new EventEmitter<boolean>()
   username: string = ""
   constructor(private loginService: LoginService, private cookieService: CookieService, private router: Router) { }
-  
+
   ngOnInit(): void {
     if(this.cookieService.check("username")) {
       this.username = this.cookieService.get("username");
@@ -21,10 +21,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.loginService.loginLoginGet({ username: this.username }).subscribe({
+    this.loginService.login({ username: this.username }).subscribe({
       complete: () => {
         console.log(`Logged in as ${this.username}`);
-        this.router.navigateByUrl("/rooms")
+        this.loginEvent.emit(true);
+        this.router.navigateByUrl("/main");
       },
       error: (error) => {
         console.log(error);

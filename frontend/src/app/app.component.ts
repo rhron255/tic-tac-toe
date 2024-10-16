@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'tic-tac-toe';
   loggedIn = false;
-  connectedToRoom = false;
 
   ngOnInit(): void {
 
@@ -17,5 +16,4 @@ export class AppComponent implements OnInit {
   onLoginAttempt(event: boolean) {
       this.loggedIn = event;
   }
-
 }

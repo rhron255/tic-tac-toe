@@ -11,8 +11,8 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
-import { loginLoginGet } from '../fn/login/login-login-get';
-import { LoginLoginGet$Params } from '../fn/login/login-login-get';
+import { login } from '../fn/login/login';
+import { Login$Params } from '../fn/login/login';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService extends BaseService {
@@ -20,8 +20,8 @@ export class LoginService extends BaseService {
     super(config, http);
   }
 
-  /** Path part for operation `loginLoginGet()` */
-  static readonly LoginLoginGetPath = '/login';
+  /** Path part for operation `login()` */
+  static readonly LoginPath = '/login';
 
   /**
    * Login.
@@ -29,12 +29,12 @@ export class LoginService extends BaseService {
    *
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `loginLoginGet()` instead.
+   * To access only the response body, use `login()` instead.
    *
    * This method doesn't expect any request body.
    */
-  loginLoginGet$Response(params: LoginLoginGet$Params, context?: HttpContext): Observable<StrictHttpResponse<any>> {
-    return loginLoginGet(this.http, this.rootUrl, params, context);
+  login$Response(params: Login$Params, context?: HttpContext): Observable<StrictHttpResponse<any>> {
+    return login(this.http, this.rootUrl, params, context);
   }
 
   /**
@@ -43,12 +43,12 @@ export class LoginService extends BaseService {
    *
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `loginLoginGet$Response()` instead.
+   * To access the full response (for headers, for example), `login$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  loginLoginGet(params: LoginLoginGet$Params, context?: HttpContext): Observable<any> {
-    return this.loginLoginGet$Response(params, context).pipe(
+  login(params: Login$Params, context?: HttpContext): Observable<any> {
+    return this.login$Response(params, context).pipe(
       map((r: StrictHttpResponse<any>): any => r.body)
     );
   }

@@ -8,14 +8,15 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { RoomDto } from '../../models/room-dto';
 
-export interface GetAllRoomsRoomsGet$Params {
+export interface Login$Params {
+  username: string;
 }
 
-export function getAllRoomsRoomsGet(http: HttpClient, rootUrl: string, params?: GetAllRoomsRoomsGet$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<RoomDto>>> {
-  const rb = new RequestBuilder(rootUrl, getAllRoomsRoomsGet.PATH, 'get');
+export function login(http: HttpClient, rootUrl: string, params: Login$Params, context?: HttpContext): Observable<StrictHttpResponse<any>> {
+  const rb = new RequestBuilder(rootUrl, login.PATH, 'get');
   if (params) {
+    rb.query('username', params.username, {});
   }
 
   return http.request(
@@ -23,9 +24,9 @@ export function getAllRoomsRoomsGet(http: HttpClient, rootUrl: string, params?: 
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<Array<RoomDto>>;
+      return r as StrictHttpResponse<any>;
     })
   );
 }
 
-getAllRoomsRoomsGet.PATH = '/rooms';
+login.PATH = '/login';

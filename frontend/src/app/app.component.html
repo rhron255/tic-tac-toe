@@ -1,5 +1,14 @@
-<title>Tic Tac Toe</title>
-<h1>Tic Tac Toe!</h1>
-<section class="content">
-    <router-outlet></router-outlet>
-</section>
+<div class="grid-container">
+  <h1 class="header">TIC TAC TOE</h1>
+  <div class="left">
+    <app-room-view></app-room-view>
+  </div>
+  <div class="main">
+    <app-login (loginEvent)="onLoginAttempt($event)" *ngIf="!loggedIn"></app-login>
+    <router-outlet *ngIf="loggedIn"></router-outlet>
+  </div>
+  <div class="right">
+    <app-room-creator></app-room-creator>
+  </div>
+  <div class="footer">Footer</div>
+</div>

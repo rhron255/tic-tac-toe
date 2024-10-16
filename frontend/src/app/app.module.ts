@@ -12,17 +12,20 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
-import {MatGridListModule} from '@angular/material/grid-list';
-import { RoomSelectorComponent } from './room-selector/room-selector.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { RoomViewComponent } from './room-view/room-view.component';
+import { RoomCreatorComponent } from './room-creator/room-creator.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
     LoginComponent,
-    RoomSelectorComponent,
-
+    RoomViewComponent,
+    RoomCreatorComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,4 +38,5 @@ import { MatCardModule } from '@angular/material/card';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}

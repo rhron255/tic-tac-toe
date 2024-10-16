@@ -11,10 +11,10 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
-import { createRoomRoomsCreateGet } from '../fn/rooms/create-room-rooms-create-get';
-import { CreateRoomRoomsCreateGet$Params } from '../fn/rooms/create-room-rooms-create-get';
-import { getAllRoomsRoomsGet } from '../fn/rooms/get-all-rooms-rooms-get';
-import { GetAllRoomsRoomsGet$Params } from '../fn/rooms/get-all-rooms-rooms-get';
+import { createRoom } from '../fn/rooms/create-room';
+import { CreateRoom$Params } from '../fn/rooms/create-room';
+import { getAllRooms } from '../fn/rooms/get-all-rooms';
+import { GetAllRooms$Params } from '../fn/rooms/get-all-rooms';
 import { RoomDto } from '../models/room-dto';
 
 @Injectable({ providedIn: 'root' })
@@ -23,8 +23,8 @@ export class RoomsService extends BaseService {
     super(config, http);
   }
 
-  /** Path part for operation `createRoomRoomsCreateGet()` */
-  static readonly CreateRoomRoomsCreateGetPath = '/rooms/create';
+  /** Path part for operation `createRoom()` */
+  static readonly CreateRoomPath = '/rooms/create';
 
   /**
    * Create Room.
@@ -32,12 +32,12 @@ export class RoomsService extends BaseService {
    *
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `createRoomRoomsCreateGet()` instead.
+   * To access only the response body, use `createRoom()` instead.
    *
    * This method doesn't expect any request body.
    */
-  createRoomRoomsCreateGet$Response(params: CreateRoomRoomsCreateGet$Params, context?: HttpContext): Observable<StrictHttpResponse<RoomDto>> {
-    return createRoomRoomsCreateGet(this.http, this.rootUrl, params, context);
+  createRoom$Response(params: CreateRoom$Params, context?: HttpContext): Observable<StrictHttpResponse<RoomDto>> {
+    return createRoom(this.http, this.rootUrl, params, context);
   }
 
   /**
@@ -46,18 +46,18 @@ export class RoomsService extends BaseService {
    *
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `createRoomRoomsCreateGet$Response()` instead.
+   * To access the full response (for headers, for example), `createRoom$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  createRoomRoomsCreateGet(params: CreateRoomRoomsCreateGet$Params, context?: HttpContext): Observable<RoomDto> {
-    return this.createRoomRoomsCreateGet$Response(params, context).pipe(
+  createRoom(params: CreateRoom$Params, context?: HttpContext): Observable<RoomDto> {
+    return this.createRoom$Response(params, context).pipe(
       map((r: StrictHttpResponse<RoomDto>): RoomDto => r.body)
     );
   }
 
-  /** Path part for operation `getAllRoomsRoomsGet()` */
-  static readonly GetAllRoomsRoomsGetPath = '/rooms';
+  /** Path part for operation `getAllRooms()` */
+  static readonly GetAllRoomsPath = '/rooms';
 
   /**
    * Get All Rooms.
@@ -65,12 +65,12 @@ export class RoomsService extends BaseService {
    *
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `getAllRoomsRoomsGet()` instead.
+   * To access only the response body, use `getAllRooms()` instead.
    *
    * This method doesn't expect any request body.
    */
-  getAllRoomsRoomsGet$Response(params?: GetAllRoomsRoomsGet$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<RoomDto>>> {
-    return getAllRoomsRoomsGet(this.http, this.rootUrl, params, context);
+  getAllRooms$Response(params?: GetAllRooms$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<RoomDto>>> {
+    return getAllRooms(this.http, this.rootUrl, params, context);
   }
 
   /**
@@ -79,12 +79,12 @@ export class RoomsService extends BaseService {
    *
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `getAllRoomsRoomsGet$Response()` instead.
+   * To access the full response (for headers, for example), `getAllRooms$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  getAllRoomsRoomsGet(params?: GetAllRoomsRoomsGet$Params, context?: HttpContext): Observable<Array<RoomDto>> {
-    return this.getAllRoomsRoomsGet$Response(params, context).pipe(
+  getAllRooms(params?: GetAllRooms$Params, context?: HttpContext): Observable<Array<RoomDto>> {
+    return this.getAllRooms$Response(params, context).pipe(
       map((r: StrictHttpResponse<Array<RoomDto>>): Array<RoomDto> => r.body)
     );
   }
