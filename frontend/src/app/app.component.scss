@@ -1,75 +1,55 @@
-input[type="text"] {
-  border: solid 1px var(--primary-color);
-  padding: 10px;
-  border-radius: 8px;
-  margin-right: 4px;
-  display: inline-block;
-  width: 30%;
-}
-
-button {
-  padding: 10px;
-  border: solid 1px var(--primary-color);
-  background: var(--primary-color);
-  color: white;
-  border-radius: 8px;
-}
-
-@media (min-width: 500px) and (max-width: 768px) {
-  .results {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  input[type="text"] {
-    width: 70%;
-  }
-}
-
-@media (max-width: 499px) {
-  .results {
-    grid-template-columns: 1fr;
-  }
+.viewport {
+  height: 95%;
 }
 
 .header {
   grid-area: header;
 }
 
-.menu {
-  grid-area: menu;
-  width: fit-content;
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 90%;
+}
+
+.footer {
+}
+
+.left {
+  flex-grow: 1;
+  border-radius: 1em;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 24px;
+  max-height: inherit;
 }
 
 .main {
   grid-area: main;
+  flex-grow: 4;
+  margin-left: 2em;
+  margin-right: 2em;
+  border-radius: 1em;
+  max-height: inherit;
 }
 
-div .right {
+.right {
   grid-area: right;
-  padding-left: 1em;
+  flex-grow: 1;
+  border-radius: 1em;
+  max-height: inherit;
 }
 
-.footer {
-  grid-area: footer;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-areas:
-    'header header header header header header header'
-    'menu main main main main right right'
-    'footer footer footer footer footer footer footer';
-  gap: 10px;
-  background-color: rgba(33, 150, 243, 0.18);
-  padding: 10px;
-}
-
-.grid-container > div {
+.island {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
   padding: 20px 0;
-  font-size: 30px;
+  font-size: 24px;
+  max-height: 100%;
 }
 
-app-room-view {
+section {
+  padding: 10px;
 }

@@ -1,14 +1,17 @@
-<div class="grid-container">
+<div class="viewport">
   <h1 class="header">TIC TAC TOE</h1>
-  <div class="left">
-    <app-room-view></app-room-view>
-  </div>
-  <div class="main">
-    <app-login (loginEvent)="onLoginAttempt($event)" *ngIf="!loggedIn"></app-login>
-    <router-outlet *ngIf="loggedIn"></router-outlet>
-  </div>
-  <div class="right">
-    <app-room-creator></app-room-creator>
-  </div>
-  <div class="footer">Footer</div>
+  <section class="flex-row">
+    <div class="left island">
+      <h1 style="padding-left: 1em">Rooms</h1>
+      <app-room-view></app-room-view>
+    </div>
+    <div class="main island">
+      <app-login (loginEvent)="onLoginAttempt($event)" *ngIf="!loggedIn"></app-login>
+      <router-outlet *ngIf="loggedIn"></router-outlet>
+    </div>
+    <div class="right island">
+      <app-room-creator></app-room-creator>
+    </div>
+  </section>
+  <div class="footer island">Footer</div>
 </div>

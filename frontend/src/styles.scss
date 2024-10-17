@@ -33,17 +33,40 @@ $tic-tac-toe-theme: mat.define-light-theme((
 @include mat.all-component-themes($tic-tac-toe-theme);
 
 /* You can add global styles to this file, and also import other style files */
-
-body {
-  margin: 0;
-  padding: 0;
+html, body {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+body {
+  background-color: rgba(33, 150, 243, 0.18);
+  height: 100dvh;
+}
+html {
+  overflow: clip;
+}
 h1 {
   text-align: start;
 }
 
 .column {
   padding-left: 1em;
+}
+
+input[type="text"] {
+  border: solid 1px var(--primary-color);
+  padding: 10px;
+  border-radius: 8px;
+  margin-right: 4px;
+  display: inline-block;
+  width: 30%;
+}
+
+button {
+  padding: 10px;
+  border: solid 1px var(--primary-color);
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
 }
